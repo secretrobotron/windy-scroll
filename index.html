@@ -34,6 +34,7 @@
         margin-left: -25px;
         border-radius: 50px;
         border: 10px solid transparent;
+        z-index: 10;
       }
 
       .segment:before {
@@ -57,22 +58,36 @@
         border-color: #000;
       }
 
+      .segment .content .text {
+        position: absolute;
+        top: 50%;
+        margin-top: -1rem;
+        font-family: sans-serif;
+        font-size: 2rem;
+      }
+
+      .segment .content .text.top {
+        top: 0;
+      }
+
+      .segment .content .text.bottom {
+        top: auto;
+        bottom: 2rem;
+      }
+
       .segment .content {
         position: absolute;
         margin-left: 20px;
-        height: 2em;
-        top: 50%;
         z-index: 3;
-        font-family: sans-serif;
-        font-size: 2rem;
+        height: 100%;
         width: 500px;
       }
 
       *[data-line-segment] {
         position: absolute;
         -webkit-transform-origin: 10px 0px;
-           -moz-transform-origin: 0px 0px;
-                transform-origin: 0px 0px;
+           -moz-transform-origin: 10px 0px;
+                transform-origin: 10px 0px;
       }
 
       *[data-translation-container],
@@ -84,6 +99,91 @@
         position: fixed;
         left: 10%;
         top: 35%;
+      }
+
+      .overflow-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .rotate-right {
+        -webkit-transform: rotate(90deg);
+           -moz-transform: rotate(90deg);
+                transform: rotate(90deg);
+      }
+
+      .flag {
+        visibility: hidden;
+        -webkit-transition: -webkit-transform .2s .5s, visibility 1s;
+           -moz-transition:    -moz-transform .2s .5s, visibility 1s;
+                transition:         transform .2s .5s, visibility 1s;
+        -webkit-transform-origin: 0 0;
+           -moz-transform-origin: 0 0;
+                transform-origin: 0 0;
+        -webkit-transform: rotate(90deg);
+           -moz-transform: rotate(90deg);
+                transform: rotate(90deg);
+      }
+
+      .segment.highlight .flag {
+        visibility: visible;
+        -webkit-transform: rotate(0deg);
+           -moz-transform: rotate(0deg);
+                transform: rotate(0deg);
+      }
+
+      .pop {
+        position: absolute;
+        left: -100%;
+        -webkit-transition: left .2s .5s, visibility 1s;
+           -moz-transition: left .2s .5s, visibility 1s;
+                transition: left .2s .5s, visibility 1s;
+      }
+
+      @keyframes flash {
+        20% { visibility: hidden; }
+        50% { visibility: visible; }
+        90% { visibility: hidden; }
+      }
+
+      @-webkit-keyframes flash {
+        20% { visibility: hidden; }
+        50% { visibility: visible; }
+        90% { visibility: hidden; }
+      }
+
+      @-moz-keyframes flash {
+        20% { visibility: hidden; }
+        50% { visibility: visible; }
+        90% { visibility: hidden; }
+      }
+
+      .flash {
+        position: absolute;
+        visibility: hidden;
+        -webkit-animation-name: flash;
+           -moz-animation-name: flash;
+                animation-name: flash;
+        -webkit-animation-duration: 3s;
+           -moz-animation-duration: 3s;
+                animation-duration: 3s;
+        -webkit-animation-iteration-count: infinite;
+           -moz-animation-iteration-count: infinite;
+                animation-iteration-count: infinite;
+        z-index: 100;
+        -webkit-transform: rotate(0.1deg) translateX(1px);
+      }
+
+      .segment.highlight .pop {
+        left: 0;
+      }
+
+      *[data-doge] .text.flash {
+        font-family: "Comic Sans MS" !important;
       }
 
       #stats {
@@ -98,48 +198,160 @@
     <div id="stats">0</div>
     <div data-rotation-container>
       <div data-translation-container>
-        <div class="segment" data-line-segment data-angle="0" data-length="600"><div class="content">This</div></div>
-        <div class="segment" data-line-segment data-angle="20" data-length="600"><div class="content">is</div></div>
-        <div class="segment" data-line-segment data-angle="40"><div class="content">an</div></div>
-        <div class="segment" data-line-segment data-angle="-20"><div class="content">experiment.</div></div>
-        <div class="segment" data-line-segment data-angle="-20"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="30"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="30"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="30"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="30"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="30"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="30"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="30"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="30"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="30"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="30"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="30"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="30"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="-20"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="-20"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="-20"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="-20"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="-20"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="-21"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="-22"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="-23"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="-24"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="-25"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="-26"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="-27"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="-28"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="-29"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="-30"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="-31"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="-32"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="-33"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="-34"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="-35"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="-36"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="-37"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="-38"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="-39"><div class="content"></div></div>
-        <div class="segment" data-line-segment data-angle="-40"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="0" data-length="600">
+          <div class="content"><div class="text">This</div></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="20" data-length="600">
+          <div class="content"><div class="text">is</div></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="40">
+          <div class="content"><div class="text">an</div></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="-20">
+          <div class="content">
+            <div class="text bottom">experiment</div>
+            <div class="overflow-wrapper"><img class="flag" src="assets/science.jpg"></div>
+          </div>
+        </div>
+        <div class="segment" data-line-segment data-angle="-20">
+          <div class="content"><div class="text">in</div></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="30">
+          <div class="content"><div class="text">page</div></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="30">
+          <div class="content"><div class="text">flow.</div></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="30">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="30">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="30">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="30">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="30">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="30">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="30">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="30">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="30">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="30">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="-20">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="-20">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="-20">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="-20">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="-20">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="-21">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="-22">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="-23">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="-24">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="-25">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="-26">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="-27">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="-28">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="-29">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="-30">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="-31">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="-32">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="-33">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="-34">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="-35">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="-36">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="-37">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="-38">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="-39">
+          <div class="content"></div>
+        </div>
+        <div class="segment" data-line-segment data-angle="-40">
+          <div class="content" data-doge>
+            <div class="overflow-wrapper"><img class="pop rotate-right" src="assets/doge.png"></div>
+            <div class="text flash">such scroll</div>
+            <div class="text flash">wow</div>
+            <div class="text flash">very design</div>
+            <div class="text flash">much html</div>
+            <div class="text flash">so flash</div>
+            <script>
+              (function () {
+                var colors = ['#f00', '#0f0', '#00f', '#ff0', '#0ff'];
+                Array.prototype.forEach.call(document.querySelectorAll('*[data-doge] > .flash'), function (f) {
+                  var duration = Math.round(Math.random() * 5) + 1 + 's';
+                  var delay = Math.round(Math.random() * 3) + 1 + 's';
+                  f.style.left = Math.round(Math.random()*100) + '%';
+                  f.style.top = Math.round(Math.random()*100) + '%';
+                  f.style.webkitAnimationDuration = duration;
+                  f.style.MozAnimationDuration = duration;
+                  f.style.animationDuration = duration;
+                  f.style.webkitAnimationDelay = delay;
+                  f.style.MozAnimationDelay = delay;
+                  f.style.animationDelay = delay;
+                  f.style.color = colors[Math.floor(Math.random() * colors.length)];
+                });
+              })();
+            </script>
+          </div>
+        </div>
       </div>
     </div>
     <script>
@@ -177,7 +389,7 @@
           segment.style.top = segmentData.startY + 'px';
           segment.style.height = segmentData.length + 'px';
           segment.style.transform = 'rotate(' + segmentData.angle + 'deg)';
-          segment.style.mozTransform = 'rotate(' + segmentData.angle + 'deg)';
+          segment.style.MozTransform = 'rotate(' + segmentData.angle + 'deg)';
           segment.style.webkitTransform = 'rotate(' + segmentData.angle + 'deg)';
           lastX = segmentData.endX;
           lastY = segmentData.endY;
@@ -215,7 +427,6 @@
 
         (function displayLoop () {
           // Tween camera
-
           cameraPosition[0] -= (cameraPosition[0] - cameraPositionTarget[0]) * TWEEN_SPEED;
           cameraPosition[1] -= (cameraPosition[1] - cameraPositionTarget[1]) * TWEEN_SPEED;
 
@@ -229,10 +440,10 @@
           var translationTransform = 'translateX(' + cameraPosition[0] + 'px) translateY(' + cameraPosition[1] + 'px)';
           var rotationTransform = 'rotate(' + cameraRotation + 'deg)'
           translationContainer.style.webkitTransform = translationTransform;
-          translationContainer.style.mozTransform = translationTransform;
+          translationContainer.style.MozTransform = translationTransform;
           translationContainer.style.transform = translationTransform;
           rotationContainer.style.webkitTransform = rotationTransform;
-          rotationContainer.style.mozTransform = rotationTransform;
+          rotationContainer.style.MozTransform = rotationTransform;
           rotationContainer.style.transform = rotationTransform;
 
           // Loop again
@@ -240,7 +451,7 @@
         })();
 
         function updateScroll () {
-          var sy = Math.max(document.body.scrollTop, 0);
+          var sy = Math.min(Math.max(window.scrollY, 0), segments[segments.length - 1].end);
 
           var segment = segments[segments.length - 1];
 
