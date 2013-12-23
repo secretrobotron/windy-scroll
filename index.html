@@ -1,0 +1,288 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      html, body {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        font-size: 20pt;
+      }
+
+      .segment {
+        position: absolute;
+        background: #000;
+        width: 20px;
+        margin-left: -10px;
+        margin-top: -.25%;
+        height: 100.5%;
+        z-index: 1;
+        -webkit-transition: background-color 1s;
+           -moz-transition: background-color 1s;
+                transition: background-color 1s;
+      }
+
+      .segment:before,
+      .segment:after {
+        position: absolute;
+        content: ' ';
+        width: 30px;
+        height: 30px;
+        background: #000;
+        left: 50%;
+        margin-left: -25px;
+        border-radius: 50px;
+        border: 10px solid transparent;
+      }
+
+      .segment:before {
+        top: 0;
+        margin-top: -25px;
+      }
+
+      .segment:after {
+        bottom: 0;
+        margin-bottom: -25px;
+      }
+
+      .segment.highlight {
+        background: #cc0;
+        z-index: 2;
+      }
+
+      .segment.highlight:before,
+      .segment.highlight:after {
+        background: #cc0;
+        border-color: #000;
+      }
+
+      .segment .content {
+        position: absolute;
+        margin-left: 20px;
+        height: 2em;
+        top: 50%;
+        z-index: 3;
+        font-family: sans-serif;
+        font-size: 2rem;
+        width: 500px;
+      }
+
+      *[data-line-segment] {
+        position: absolute;
+        -webkit-transform-origin: 10px 0px;
+           -moz-transform-origin: 0px 0px;
+                transform-origin: 0px 0px;
+      }
+
+      *[data-translation-container],
+      *[data-rotation-container] {
+        position: absolute;
+      }
+
+      *[data-rotation-container] {
+        position: fixed;
+        left: 10%;
+        top: 35%;
+      }
+
+      #stats {
+        position: fixed;
+        font-size: 140px;
+        font-family: helvetica;
+        right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="stats">0</div>
+    <div data-rotation-container>
+      <div data-translation-container>
+        <div class="segment" data-line-segment data-angle="0" data-length="600"><div class="content">This</div></div>
+        <div class="segment" data-line-segment data-angle="20" data-length="600"><div class="content">is</div></div>
+        <div class="segment" data-line-segment data-angle="40"><div class="content">an</div></div>
+        <div class="segment" data-line-segment data-angle="-20"><div class="content">experiment.</div></div>
+        <div class="segment" data-line-segment data-angle="-20"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="30"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="30"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="30"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="30"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="30"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="30"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="30"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="30"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="30"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="30"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="30"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="30"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="-20"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="-20"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="-20"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="-20"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="-20"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="-21"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="-22"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="-23"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="-24"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="-25"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="-26"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="-27"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="-28"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="-29"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="-30"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="-31"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="-32"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="-33"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="-34"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="-35"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="-36"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="-37"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="-38"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="-39"><div class="content"></div></div>
+        <div class="segment" data-line-segment data-angle="-40"><div class="content"></div></div>
+      </div>
+    </div>
+    <script>
+      (function() {
+        var DEFAULT_LENGTH = 400;
+        var TWEEN_SPEED = 0.40;
+
+        var segments = [];
+
+        var lastY = 0;
+        var lastX = 0;
+        var lastAngle = 0;
+        var totalLength = 0;
+
+        Array.prototype.forEach.call(document.querySelectorAll('*[data-line-segment]'), function (segment) {
+          var angle = lastAngle + Number(segment.getAttribute('data-angle'));
+          var radians = angle * Math.PI / 180;
+          var length = Number(segment.getAttribute('data-length')) || DEFAULT_LENGTH;
+          var sinLength = Math.sin(radians) * length;
+          var cosLength = Math.cos(radians) * length;
+
+          var segmentData = {
+            start: totalLength,
+            end: totalLength + length,
+            length: length,
+            angle: angle,
+            startX: lastX,
+            startY: lastY,
+            endX: lastX - sinLength,
+            endY: lastY + cosLength,
+            element: segment
+          };
+
+          segment.style.left = segmentData.startX + 'px';
+          segment.style.top = segmentData.startY + 'px';
+          segment.style.height = segmentData.length + 'px';
+          segment.style.transform = 'rotate(' + segmentData.angle + 'deg)';
+          segment.style.mozTransform = 'rotate(' + segmentData.angle + 'deg)';
+          segment.style.webkitTransform = 'rotate(' + segmentData.angle + 'deg)';
+          lastX = segmentData.endX;
+          lastY = segmentData.endY;
+          lastAngle = segmentData.angle;
+          totalLength += segmentData.length;
+
+          segments.push(segmentData);
+        });
+
+        totalLength += window.innerHeight;
+
+        document.body.style.height = totalLength + 'px';
+
+        var requestAnimFrame = (function(){
+          return  window.requestAnimationFrame       ||
+                  window.webkitRequestAnimationFrame ||
+                  window.mozRequestAnimationFrame    ||
+                  function( callback ){
+                    window.setTimeout(callback, 1000 / 60);
+                  };
+        })();
+
+        var translationContainer = document.querySelector('*[data-translation-container]');
+        var rotationContainer = document.querySelector('*[data-rotation-container]');
+
+        var stats = document.querySelector('#stats');
+
+        document.addEventListener('scroll', updateScroll, false);
+
+        var oldSegment;
+        var cameraPosition = [0, 0];
+        var cameraPositionTarget = [0, 0];
+        var cameraRotation = 0;
+        var cameraRotationTarget = 0;
+
+        (function displayLoop () {
+          // Tween camera
+
+          cameraPosition[0] -= (cameraPosition[0] - cameraPositionTarget[0]) * TWEEN_SPEED;
+          cameraPosition[1] -= (cameraPosition[1] - cameraPositionTarget[1]) * TWEEN_SPEED;
+
+          cameraRotation -= (cameraRotation - cameraRotationTarget) * TWEEN_SPEED;
+
+          cameraPosition[0] = Math.round(cameraPosition[0] * 1000) / 1000;
+          cameraPosition[1] = Math.round(cameraPosition[1] * 1000) / 1000;
+          cameraRotation = Math.round(cameraRotation * 1000) / 1000;
+
+          // Update camera
+          var translationTransform = 'translateX(' + cameraPosition[0] + 'px) translateY(' + cameraPosition[1] + 'px)';
+          var rotationTransform = 'rotate(' + cameraRotation + 'deg)'
+          translationContainer.style.webkitTransform = translationTransform;
+          translationContainer.style.mozTransform = translationTransform;
+          translationContainer.style.transform = translationTransform;
+          rotationContainer.style.webkitTransform = rotationTransform;
+          rotationContainer.style.mozTransform = rotationTransform;
+          rotationContainer.style.transform = rotationTransform;
+
+          // Loop again
+          requestAnimFrame(displayLoop);
+        })();
+
+        function updateScroll () {
+          var sy = Math.max(document.body.scrollTop, 0);
+
+          var segment = segments[segments.length - 1];
+
+          for (var i = 0, l = segments.length; i < l; ++i) {
+            if (sy >= segments[i].start && sy < segments[i].end) {
+              segment = segments[i];
+              break;
+            }
+          }
+
+          if (oldSegment) {
+            oldSegment.element.classList.remove('highlight');
+          }
+
+          segment = segment || segments[0];
+          oldSegment = segment;
+
+          segment.element.classList.add('highlight');
+
+          var diffX = segment.endX - segment.startX;
+          var diffY = segment.endY - segment.startY;
+          var offsetS = (sy - segment.start) / segment.length;
+
+          var offsetX = offsetS * diffX;
+          var offsetY = offsetS * diffY;
+
+          var counterAngle = -segment.angle;
+
+          var tx = -segment.startX - offsetX;
+          var ty = -segment.startY - offsetY;
+          var ta = -segment.angle;
+
+          cameraPositionTarget[0] = Math.round(tx*1000)/1000;
+          cameraPositionTarget[1] = Math.round(ty*1000)/1000;
+
+          cameraRotationTarget = ta;
+
+          stats.innerHTML = sy;
+        }
+
+        updateScroll();
+      })();
+    </script>
+  </body>
+</html>
